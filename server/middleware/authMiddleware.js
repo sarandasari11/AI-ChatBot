@@ -1,3 +1,5 @@
+// This middleware protects routes by verifying JWT tokens
+
 import jwt from "jsonwebtoken";
 
 export const protect = (req, res, next) => {

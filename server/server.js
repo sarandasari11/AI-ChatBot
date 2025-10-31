@@ -1,5 +1,6 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -7,10 +8,11 @@ import rateLimit from "express-rate-limit";
 import connectDB from "./config/db.js";
 import testRoute from "./routes/testRoute.js";
 import authRoutes from "./routes/authRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 import { protect } from "./middleware/authMiddleware.js";
 
-dotenv.config();
 
+console.log("Loaded GEMINI_API_KEY:", process.env.GEMINI_API_KEY ? "✅ Yes" : "❌ No");
 // Connect to MongoDB
 connectDB();
 
@@ -33,6 +35,8 @@ app.use(morgan("dev"));
 // ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoute);
+app.use("/api/chat", chatRoutes);
+
 
 // ✅ Protected Test Route
 app.get("/api/protected", protect, (req, res) => {

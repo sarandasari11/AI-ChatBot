@@ -1,3 +1,5 @@
+// This file defines the User model schema for MongoDB
+
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(

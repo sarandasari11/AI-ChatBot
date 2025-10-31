@@ -1,3 +1,5 @@
+// This file contains user registration and login logic
+
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
