@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
+import mongoose from "mongoose";
 import rateLimit from "express-rate-limit";
 import connectDB from "./config/db.js";
 import testRoute from "./routes/testRoute.js";
@@ -29,7 +30,7 @@ app.use(rateLimit({
 
 // ✅ Core Middleware
 app.use(cors());
-app.use(express.json()); // parse JSON bodies
+app.use(express.json()); 
 app.use(morgan("dev"));
 
 // ✅ Routes
@@ -37,10 +38,21 @@ app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoute);
 app.use("/api/chat", chatRoutes);
 
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Error:", err));
+
 
 // ✅ Protected Test Route
 app.get("/api/protected", protect, (req, res) => {
   res.json({ message: `Welcome ${req.user.email}, protected route access granted.` });
+});
+
+// ✅ Default route (optional)
+app.get("/", (req, res) => {
+  res.send("AI Chatbot backend is running 🚀");
 });
 
 // ✅ Global Error Handler (Optional but recommended)

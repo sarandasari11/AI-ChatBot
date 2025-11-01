@@ -6,6 +6,7 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+// POST /api/chat/message  (protected route)
 router.post("/message", protect, sendMessage);
 
 export default router;

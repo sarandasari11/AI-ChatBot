@@ -1,3 +1,5 @@
+// This file handles the connection to the MongoDB database using Mongoose.
+
 import mongoose from "mongoose";
 
 const connectDB = async () => {
