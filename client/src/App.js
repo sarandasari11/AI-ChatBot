@@ -29,7 +29,7 @@ function App() {
         {/* ---------------- HEADER ---------------- */}
         <header className="main-header">
           <div className="header-left">
-            <h1 className="app-title">💬 Gemini AI Chat</h1>
+            <h1 className="app-title">💬 AI ChatBot</h1>
           </div>
 
           <div className="header-right">
@@ -58,7 +58,7 @@ function App() {
                   <Navigate to="/chat" />
                 ) : (
                   <div className="home-page">
-                    <h2>Welcome to Gemini AI Chatbot 🤖</h2>
+                    <h2>Welcome to AI Chatbot 🤖</h2>
                     <p>Chat with an intelligent assistant powered by Google Gemini.</p>
                     <p>Please <Link to="/login">login</Link> or <Link to="/register">register</Link> to continue.</p>
                   </div>

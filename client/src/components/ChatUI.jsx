@@ -252,9 +252,9 @@ const ChatUI = () => {
       <header className={`chat-header`}>
         <div className="header-content">
           <div className="bot-info">
-            <BotAvatar src="/avatar.jpg" alt="Gemini AI" />
+            <BotAvatar src="/avatar.jpg" alt="AI ChatBot" />
             <div className="bot-details">
-              <h1>Gemini AI</h1>
+              <h1>AI ChatBot</h1>
               <span className="status">Always Online</span>
             </div>
           </div>
