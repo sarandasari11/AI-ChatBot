@@ -1,238 +1,152 @@
-AI Chatbot (MERN Full-Stack Application)
+# 🤖 AI Chatbot (MERN + Gemini 2.5 Flash)
 
-An intelligent AI-powered chatbot built using the MERN stack and Google Gemini API.
-The system provides a modern chat interface with authentication, context persistence, streaming responses, and elegant UI theming.
+An intelligent, real-time chatbot built with the **MERN stack (MongoDB, Express, React, Node.js)** and powered by **Google Gemini 2.5 Flash**.  
+It features secure JWT authentication, streaming AI responses, and a polished modern UI.
 
-🚀 Features
-🧠 AI & Chat Features
+---
 
-Gemini 2.5 Flash API integration – Fast, intelligent, and context-aware replies.
+## 🚀 Features
 
-Context retention – Stores chat history per user in MongoDB.
+### 💬 Chat System
+- Interactive **real-time conversation** with Gemini AI.  
+- **Typing animation** and smooth message transitions using *Framer Motion*.  
+- **Shift + Enter** support for multiline messages.  
+- **Light / Dark theme toggle** with persistence.  
 
-Persistent sessions – Messages remain even after reloads or logout.
+### 🧑‍💻 User Management
+- Secure **JWT-based authentication**.  
+- **Register / Login / Logout** workflows.  
+- Session persistence (auto-login on reload).  
 
-Streaming simulation – Smooth text animation mimicking real typing.
+### 🧱 Chat Persistence
+- **MongoDB storage** for all user messages.  
+- **Load previous conversations** after login.  
+- Options to **Clear Chat** and **Export Chat** as JSON.  
 
-Markdown & code rendering – Supports formatted AI responses and syntax blocks.
+### ⚙️ Backend (Node + Express)
+- Modular architecture with `controllers`, `routes`, `services`, and `middleware`.  
+- Provider abstraction layer — currently integrated with **Gemini 2.0 Flash**.  
+- Secure REST API endpoints with authentication middleware.  
 
-Clear & Export chat options – Delete or download conversation history.
+### 🎨 Frontend (React)
+- Responsive UI built with React and Framer Motion.  
+- Markdown rendering and code-block formatting in AI responses.  
+- Custom avatars, smooth transitions, and consistent theme design.  
 
-Shift + Enter for new lines – Multi-line message input.
+---
 
-🎨 UI / UX
+## 🧩 Tech Stack
 
-Glassmorphic dark/light theme with toggle.
+| Layer | Technology |
+|:------|:------------|
+| **Frontend** | React 18, Axios, Framer Motion, React Markdown |
+| **Backend** | Node.js + Express.js |
+| **Database** | MongoDB + Mongoose |
+| **AI Provider** | Google Gemini 2.5 Flash (Generative Language API) |
+| **Authentication** | JWT (JSON Web Tokens) |
+| **Styling** | CSS Modules + Custom Themes |
 
-Typing indicators & smooth message animations using Framer Motion.
-
-Responsive design – Works seamlessly on desktop and mobile.
-
-Beautiful welcome section with suggestion chips for quick prompts.
-
-Dynamic avatars for bot and user.
-
-Header actions: Theme toggle | Clear Chat | Export Chat | User Profile | Logout.
-
-🔐 Authentication & Security
-
-JWT-based authentication with secure middleware.
-
-Protected API routes for chat endpoints.
-
-Encrypted environment secrets (.env).
-
-Session persistence via localStorage tokens.
-
-Logout & auto-redirect logic for seamless session handling.
-
-🗄️ Persistence Layer
-
-MongoDB Atlas / Local MongoDB integration.
-
-Collections:
-
-users – user credentials & info
-
-messages – chat content with timestamps
-
-Built-in TTL support for inactive sessions (optional).
-
-⚙️ Developer Experience
-
-Modular folder structure with clean separation of concerns.
-
-Environment-driven configuration for easy deployment.
-
-Docker-ready backend structure.
-
-ES6+ clean code with comments and scalability in mind.
-
-🧩 Tech Stack
-Layer	Technology
-Frontend	React 18, Axios, React-Router-DOM, Framer-Motion, React-Markdown
-Backend	Node.js (Express.js)
-Database	MongoDB / Mongoose
-AI Provider	Google Gemini 2.0 Flash API
-Auth	JWT (JSON Web Token)
-Styling	CSS 3 + Tailwind/Custom styling
-Deployment	Render / Vercel / Netlify / Docker
-📁 Project Structure
-root/
+---
+## 🗂️ Project Structure
+```
+AI-Chatbot/
 │
-├── client/                 # React Frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ChatUI.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── textstyle.js
-│   │   │   └── *.css
-│   │   ├── App.js
-│   │   └── index.js
-│   ├── package.json
-│   └── public/
+├── client/
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── ChatUI.jsx / ChatUI.css
+│ │ │ ├── Login.jsx / Login.css
+│ │ │ ├── Register.jsx / Register.css
+│ │ │ ├── textstyle.js
+│ │ ├── App.js
+│ │ └── index.js
+│ └── package.json
 │
-├── server/                 # Node + Express Backend
-│   ├── controllers/
-│   │   ├── chatController.js
-│   │   └── authController.js
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   ├── models/
-│   │   ├── userModel.js
-│   │   └── Message.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── chatRoutes.js
-│   ├── services/
-│   │   └── providerService.js
-│   ├── providers/
-│   │   ├── geminiProvider.js
-│   │   └── providerFactory.js
-│   ├── server.js
-│   └── .env
-│
-├── README.md
-└── package.json
+└── server/
+├── controllers/
+│ ├── chatController.js
+│ └── authController.js
+├── middleware/
+│ └── authMiddleware.js
+├── models/
+│ ├── userModel.js
+│ └── Message.js
+├── providers/
+│ ├── geminiProvider.js
+│ └── providerFactory.js
+├── routes/
+│ ├── chatRoutes.js
+│ └── authRoutes.js
+├── services/
+│ └── providerService.js
+├── server.js
+└── .env
 
-🔑 Environment Variables
+```
+---
 
-Create a .env file inside your server directory:
+### 🔑 Environment Variables
 
+Create a `.env` file in your `/server` directory:
+
+```env
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/aichatbot
 JWT_SECRET=mysecretkey
 GEMINI_API_KEY=your_google_gemini_api_key
 DEFAULT_PROVIDER=gemini
+```
 
-⚙️ Installation & Setup
-1️⃣ Clone Repository
-git clone https://github.com/<your-username>/AI-Chatbot.git
-cd AI-Chatbot
+## ⚙️ Installation & Setup
+```
+1️⃣ Clone the repository
+git clone https://github.com/yourusername/AI-ChatBot.git
+cd AI-ChatBot
 
-2️⃣ Install Backend Dependencies
+2️⃣ Install backend dependencies
 cd server
 npm install
 
-3️⃣ Install Frontend Dependencies
+3️⃣ Install frontend dependencies
 cd ../client
 npm install
 
-4️⃣ Run Development Servers
+4️⃣ Start backend server
+cd ../server
+npm run dev
 
-Start backend:
-
-cd server
-npm start
-
-
-Start frontend:
-
+5️⃣ Start frontend
 cd ../client
 npm start
+```
 
+Frontend runs at http://localhost:3000
 
-Frontend runs on http://localhost:3000
+Backend runs at http://localhost:5000
 
-Backend runs on http://localhost:5000
+## 🔒 Authentication Flow
 
-🧠 How It Works
+User registers or logs in → JWT token generated.
 
-User Registration/Login:
-JWT token is generated and stored in localStorage for session authentication.
+Token stored securely in localStorage.
 
-Chat Flow:
+Protected routes (chat/history/clear/export) validated using middleware.
 
-The user sends a message → frontend calls /api/chat/message.
+Session auto-persists until user logs out.
 
-Backend validates JWT → calls Gemini API.
+## 💬 API Endpoints
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| **POST** | `/api/auth/register` | Register a new user |
+| **POST** | `/api/auth/login` | Login and receive JWT |
+| **POST** | `/api/chat/message` | Send prompt to Gemini |
+| **DELETE** | `/api/chat/clear` | Clear user chat history |
+| **GET** | `/api/chat/export` | Export chat as JSON |
 
-Gemini’s response is returned and stored in MongoDB.
+## 🧑‍🎓 Author Information
 
-History & Controls:
-
-/api/chat/history loads past chats.
-
-/api/chat/clear deletes messages.
-
-/api/chat/export downloads them as JSON.
-
-Frontend UI:
-
-Uses React with Axios for requests.
-
-Framer-Motion for animations.
-
-Markdown rendering for AI responses.
-
-🧪 Example API Endpoints
-Endpoint	Method	Auth	Description
-/api/auth/register	POST	❌	Register new user
-/api/auth/login	POST	❌	Authenticate and receive token
-/api/chat/message	POST	✅	Send prompt to Gemini
-/api/chat/history	GET	✅	Load all chat messages
-/api/chat/clear	DELETE	✅	Clear chat history
-/api/chat/export	GET	✅	Export chat as JSON
-🧰 Future Enhancements
-
-🗂️ Multi-session chat sidebar
-
-🎤 Voice input (Speech-to-Text)
-
-🗣️ Text-to-Speech responses
-
-🧠 Conversation summarization
-
-🌈 Advanced theme customization
-
-🧾 Analytics dashboard for usage tracking
-
-🐳 Full Docker support for deployment
-
-📸 Screenshots
-💬 Chat Interface
-
-🔐 Login Page
-
-👨‍💻 Author
-
-Developer: Your Name
-GitHub: github.com/your-username
-
-Email: youremail@example.com
-
-🪪 License
-
-This project is licensed under the MIT License — feel free to use and modify with attribution.
-
-⭐ Acknowledgments
-
-Google Gemini Team for the Generative Language API.
-
-React & Node.js communities for powerful open-source tools.
-
-Inspired by modern conversational UIs like ChatGPT and Bard.
-
-✅ A complete MERN + Gemini chatbot, production-ready and academically solid.
-If you found this useful — don’t forget to ⭐ star the repo on GitHub!
+| Detail | Value |
+| :--- | :--- |
+| **Name** |Saran Dasari|
+| **Email** |dasarisaran2005@gmail.com |
+| **GitHub** | [[GitHub Profile]](https://github.com/sarandasari11) |
