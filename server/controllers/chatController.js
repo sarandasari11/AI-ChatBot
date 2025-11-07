@@ -1,7 +1,7 @@
 // This file contains chat message handling logic
 
 import { getProvider } from "../providers/providerFactory.js";
-import Message from "../models/Message.js"; // ensure your Message model exists and is correct
+import Message from "../models/Message.js"; 
 
 // 🧠 POST /api/chat/message → Send message to provider (Gemini)
 export const sendMessage = async (req, res) => {
